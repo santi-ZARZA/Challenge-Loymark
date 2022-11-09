@@ -1,7 +1,72 @@
 <div class="content">
-  <div class="card">
-    <div class="body">
-      <form [formGroup]="usuarioForm"  (submit)="submit()">
+  <div class="row">
+    <form [formGroup]="usuarioForm"  (submit)="submit()">
+      <mat-card style="max-width: 25%;">
+        <mat-card-header>
+          <mat-card-title>Alta Usuario</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="example-container mb-3">
+            <mat-form-field  appearance="outline"> 
+              <mat-label>nombre</mat-label>
+              <input matInput #input [maxlength]="30" formControlName="nombre" placeholder="nombre">
+              <mat-error *ngIf="usuarioForm.controls['nombre'].invalid">el nombre ingresado no es valido</mat-error>
+              <mat-error *ngIf="usuarioForm.controls['nombre'].errors?.['required']">el nombre es requerido</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+              <mat-form-field  appearance="outline">
+                  <mat-label>apellido</mat-label>
+                  <input matInput #input  [maxlength]="30"  formControlName="apellido" placeholder="apellido">
+                  <mat-error *ngIf="usuarioForm.controls['apellido'].invalid">el apellido ingresado no es valido</mat-error>
+                  <mat-error *ngIf="usuarioForm.controls['apellido'].errors?.['required']">el apellido es requerido</mat-error>
+              </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>correo</mat-label>
+              <input matInput #input  [maxlength]="20"  formControlName="email" placeholder="email">
+              <mat-error *ngIf="usuarioForm.controls['email'].invalid">el email ingresado no es valido</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>fecha nacimiento</mat-label>
+                <input matInput formControlName="fechaNacimiento"  [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>telefono</mat-label>
+              <input matInput #input type="number" formControlName="telefono" placeholder="telefono">
+              <mat-error *ngIf="usuarioForm.controls['telefono'].hasError('pattern')">el telefono ingresado no es valido, solo pueden ser numeros</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+              <mat-form-field appearance="outline">
+                  <mat-label>Seleccione un pais</mat-label>
+                  <mat-select formControlName="paisResidente">
+                    <mat-option *ngFor="let contrie of contries" value="{{contrie.alpha3}}">{{contrie.name}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="usuarioForm.controls['paisResidente'].errors?.['required']">tiene que seleccionar un pais</mat-error>
+                </mat-form-field>
+          </div>
+          <div class="example-container mb-3">
+            <mat-checkbox formControlName="notificacion" class="example-margin">¿Desea Recibir Notificaciones?</mat-checkbox>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button  color="primary" [disabled]="!usuarioForm.valid" (click)="AddUsuario()" class="button" type="submit">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+<!--
+        <form [formGroup]="usuarioForm"  (submit)="submit()">
         <div class="example-container mb-3">
             <mat-form-field  appearance="outline"> 
                 <mat-label>nombre</mat-label>
@@ -33,7 +98,7 @@
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-        </div><!-- -->
+        </div>
         <div class="example-container mb-3">
           <mat-form-field  appearance="outline">
             <mat-label>telefono</mat-label>
@@ -51,14 +116,9 @@
               </mat-form-field>
           </div>
           <div class="example-container mb-3">
-            <!--<mat-form-field appearance="fill">
-                <mat-label>¿Desea Recibir Notificaciones?</mat-label>
-              </mat-form-field>-->
               <mat-checkbox formControlName="notificacion" class="example-margin">¿Desea Recibir Notificaciones?</mat-checkbox>
-          </div> <!-- -->
+          </div>
         <button mat-raised-button  color="primary" [disabled]="!usuarioForm.valid" (click)="AddUsuario()" class="button" type="submit">Guardar</button>
       
       </form>
-    </div>
-  </div>
-</div>
+-->

@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 import { MatTableModule } from "@angular/material/table";
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -34,6 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    MatCardModule,
   ],
   exports:[
     NavbarComponent,
@@ -48,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule ,
     MatDatepickerModule,
     MatInputModule,
+    MatCardModule,
   ],
   providers:[
     MatDatepickerModule,
